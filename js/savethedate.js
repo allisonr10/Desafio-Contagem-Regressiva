@@ -13,6 +13,10 @@
 
     }
 
+    const p = document.createElement('p')
+
+    //criar uma função para atualizar valores automaticamente
+    const intervalo = setInterval(function(){
     const dataEvento = converterData(dataDom)
     
     //pegando data atual
@@ -27,7 +31,7 @@
     const umMinuto = 60 * 1000
     const umaHora = 60 * umMinuto
     const umDia = 24 * umaHora
-
+    
     const diasFaltam = parseInt(restante/umDia)
     restante = restante - diasFaltam * umDia
 
@@ -42,13 +46,15 @@
 
     console.log( diasFaltam, horasFaltam, minutosFaltam, segundosRestam)
 
+    adicionarValores(diasFaltam, horasFaltam, minutosFaltam, segundosRestam)
+    },1000)
+
     //função para adicionar os valores direto na página
 
-function adicionarValores(d,h,m,s){
-        const p = document.createElement('p')
+    function adicionarValores(d,h,m,s){
         p.textContent = `Contagem regressiva: Faltam ${d} dias, ${h} horas, ${m} minutos, ${s} segundos,`
         document.querySelector('.hero-content').appendChild(p)
     }
-    adicionarValores(diasFaltam, horasFaltam, minutosFaltam, segundosRestam)
+   
 
 })()
